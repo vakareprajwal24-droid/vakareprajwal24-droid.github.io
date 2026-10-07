@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prajwal Vakare | CSE Student Portfolio</title>
+    <meta name="description" content="Personal portfolio of Prajwal Vakare, a Computer Science and Engineering student at Reva University.">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth;scroll-padding-top:80px}
+        body{font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;background:#050b16;color:#e8f0ff;line-height:1.7;overflow-x:hidden}
+        a{color:inherit;text-decoration:none} button{font:inherit}
+        body::before{content:"";position:fixed;inset:0;z-index:-3;background:radial-gradient(circle at 15% 15%,rgba(37,99,235,.16),transparent 30%),radial-gradient(circle at 85% 30%,rgba(14,165,233,.10),transparent 28%),radial-gradient(circle at 50% 90%,rgba(59,130,246,.08),transparent 32%)}
+        body::after{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(59,130,246,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.08) 1px,transparent 1px);background-size:50px 50px;mask-image:linear-gradient(to bottom,black,transparent 80%)}
+        .container{width:min(1120px,92%);margin:auto}
+        header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(5,11,22,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(148,163,184,.12)}
+        nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+        .logo{font-size:1.2rem;font-weight:800;letter-spacing:-.5px;color:#fff}.logo span{color:#60a5fa}
+        .nav-links{display:flex;align-items:center;gap:28px;list-style:none}.nav-links a{position:relative;color:#aebbd0;font-size:.9rem;font-weight:600;transition:color .25s ease}.nav-links a::after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:2px;background:#60a5fa;transition:width .25s ease}.nav-links a:hover{color:#fff}.nav-links a:hover::after{width:100%}
+        .menu-btn{display:none;border:0;background:transparent;color:white;font-size:1.7rem;cursor:pointer}
+        .hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:70px;align-items:center}
+        .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 13px;border:1px solid rgba(96,165,250,.28);background:rgba(30,64,175,.12);border-radius:999px;color:#93c5fd;font-size:.82rem;font-weight:700;margin-bottom:22px}.status-dot{width:7px;height:7px;border-radius:50%;background:#60a5fa;box-shadow:0 0 12px #60a5fa}
+        .hero h1{font-size:clamp(3rem,7vw,5.8rem);line-height:.98;letter-spacing:-4px;margin-bottom:22px;color:#fff}.hero h1 span{display:block;color:transparent;background:linear-gradient(90deg,#60a5fa,#38bdf8);background-clip:text;-webkit-background-clip:text}
+        .hero-description{max-width:680px;color:#9aaac0;font-size:1.05rem;margin-bottom:30px}.hero-info{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}.info-pill{padding:8px 13px;border-radius:8px;background:rgba(15,23,42,.8);border:1px solid rgba(148,163,184,.14);color:#c9d5e8;font-size:.82rem}
+        .hero-buttons{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;min-height:46px;padding:0 19px;border-radius:10px;font-size:.9rem;font-weight:750;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}.btn:hover{transform:translateY(-3px)}.btn-primary{color:#06101f;background:#60a5fa;box-shadow:0 10px 30px rgba(37,99,235,.2)}.btn-primary:hover{background:#93c5fd;box-shadow:0 15px 35px rgba(37,99,235,.28)}.btn-secondary{color:#dbeafe;background:rgba(15,23,42,.75);border:1px solid rgba(96,165,250,.25)}.btn-secondary:hover{background:rgba(30,41,59,.9)}
+        .hero-visual{display:flex;justify-content:center}.code-card{width:min(100%,410px);border-radius:18px;overflow:hidden;background:rgba(8,15,29,.9);border:1px solid rgba(96,165,250,.2);box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 50px rgba(37,99,235,.08);transform:rotate(2deg);transition:transform .35s ease}.code-card:hover{transform:rotate(0deg) translateY(-6px)}.window-bar{display:flex;align-items:center;gap:7px;height:42px;padding:0 15px;border-bottom:1px solid rgba(148,163,184,.1);background:#0b1424}.window-dot{width:9px;height:9px;border-radius:50%;background:#334155}.code-content{padding:25px;font-family:"Courier New",monospace;font-size:.86rem;color:#94a3b8}.code-line{margin:8px 0}.keyword{color:#60a5fa}.string{color:#7dd3fc}.function{color:#bfdbfe}.comment{color:#64748b}
+        section{padding:100px 0}.section-heading{max-width:720px;margin-bottom:45px}.section-label{display:inline-block;margin-bottom:9px;color:#60a5fa;font-size:.78rem;font-weight:800;letter-spacing:2px;text-transform:uppercase}.section-heading h2{font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-1.5px;color:#fff;margin-bottom:14px}.section-heading p{color:#8fa1ba}
+        .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:25px}.glass-card{padding:30px;border-radius:18px;background:linear-gradient(145deg,rgba(15,23,42,.86),rgba(8,15,29,.8));border:1px solid rgba(148,163,184,.13)}.profile-card{display:flex;flex-direction:column;justify-content:center;min-height:280px}.profile-initial{width:74px;height:74px;display:flex;align-items:center;justify-content:center;border-radius:18px;margin-bottom:20px;background:linear-gradient(135deg,#2563eb,#0ea5e9);color:white;font-size:1.8rem;font-weight:850;box-shadow:0 15px 35px rgba(37,99,235,.2)}.profile-card h3{color:white;font-size:1.4rem;margin-bottom:8px}.profile-card p{color:#8fa1ba}.about-text p{color:#a8b6ca;margin-bottom:18px}.about-text p:last-child{margin-bottom:0}
+
+        .activities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:stretch}
+        .activity-card{position:relative;display:flex;flex-direction:column;height:100%;min-width:0;padding:30px;border-radius:20px;background:linear-gradient(145deg,rgba(15,27,48,.95),rgba(7,15,29,.94));border:1px solid rgba(96,165,250,.14);box-shadow:0 18px 45px rgba(0,0,0,.18);overflow:hidden;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+        .activity-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#2563eb,#38bdf8)}
+        .activity-card:hover{transform:translateY(-7px);border-color:rgba(96,165,250,.34);box-shadow:0 25px 60px rgba(0,0,0,.28),0 0 30px rgba(37,99,235,.08)}
+        .activity-number{display:inline-flex;align-items:center;width:fit-content;margin-bottom:13px;padding:6px 10px;border-radius:7px;background:rgba(37,99,235,.11);border:1px solid rgba(96,165,250,.14);color:#60a5fa;font-size:.72rem;font-weight:850;letter-spacing:1.5px}
+        .activity-card h3{color:#fff;font-size:1.32rem;line-height:1.3;margin-bottom:14px}.activity-card>p{color:#9aabc1;font-size:.91rem;line-height:1.7;margin-bottom:18px}.activity-card ul{list-style:none;display:grid;gap:9px;margin-bottom:22px}.activity-card li{position:relative;padding-left:19px;color:#b4c1d3;font-size:.86rem;line-height:1.55}.activity-card li::before{content:"✓";position:absolute;left:0;top:1px;color:#60a5fa;font-size:.75rem;font-weight:800}
+        .activity-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:20px;border-top:1px solid rgba(148,163,184,.09)}
+        .repo-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:43px;padding:0 15px;border-radius:9px;background:rgba(37,99,235,.16);border:1px solid rgba(96,165,250,.28);color:#dbeafe;font-size:.82rem;font-weight:750;transition:background .25s ease,border-color .25s ease,transform .25s ease}.repo-btn:hover{background:#2563eb;border-color:#60a5fa;color:#fff;transform:translateY(-2px)}.repo-btn.primary{background:linear-gradient(135deg,#2563eb,#1d4ed8);border-color:rgba(147,197,253,.35);color:#fff}.repo-btn.primary:hover{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+        .shared-repository{display:flex;align-items:center;gap:8px;width:fit-content;margin-top:-7px;margin-bottom:17px;padding:6px 10px;border-radius:7px;color:#93c5fd;background:rgba(30,64,175,.10);border:1px solid rgba(96,165,250,.13);font-size:.72rem;font-weight:700}.shared-repository::before{content:"↗";font-size:.75rem}
+        .problem-list{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 0}.problem{padding:7px 10px;border-radius:7px;color:#c7d8ee;background:rgba(30,64,175,.10);border:1px solid rgba(96,165,250,.13);font-size:.74rem;line-height:1.3}
+
+        .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.skill{min-height:80px;display:flex;align-items:center;justify-content:center;text-align:center;padding:15px;border-radius:12px;background:rgba(15,23,42,.75);border:1px solid rgba(148,163,184,.11);color:#cbd8ea;font-weight:650;font-size:.88rem;transition:transform .25s ease,border-color .25s ease}.skill:hover{transform:translateY(-4px);border-color:rgba(96,165,250,.35);color:#fff}
+        .career-card{position:relative;padding:45px;overflow:hidden;border-radius:20px;background:linear-gradient(120deg,rgba(30,64,175,.22),rgba(8,15,29,.9));border:1px solid rgba(96,165,250,.2)}.career-card::after{content:"</>";position:absolute;right:30px;bottom:-20px;color:rgba(96,165,250,.055);font-family:monospace;font-size:10rem;font-weight:900;pointer-events:none}.career-card h3{position:relative;z-index:1;color:white;font-size:1.7rem;margin-bottom:15px}.career-card p{position:relative;z-index:1;max-width:800px;color:#a8b6ca;margin-bottom:20px}.goal-list{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:9px}.goal{padding:8px 12px;border-radius:8px;color:#bfdbfe;background:rgba(37,99,235,.12);border:1px solid rgba(96,165,250,.15);font-size:.82rem}
+        .contact-card{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:35px;border-radius:18px;background:rgba(10,19,35,.85);border:1px solid rgba(148,163,184,.13)}.contact-card h3{color:white;font-size:1.5rem;margin-bottom:8px}.contact-card p{color:#91a2ba}.contact-buttons{display:flex;gap:10px;flex-wrap:wrap}
+        footer{padding:30px 0;border-top:1px solid rgba(148,163,184,.1);color:#718198;font-size:.82rem;text-align:center}
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+        @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:50px}.hero-visual{justify-content:flex-start}.about-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:repeat(3,1fr)}.contact-card{grid-template-columns:1fr}}
+        @media(max-width:800px){.activities{grid-template-columns:1fr}.activity-card{padding:26px}}
+        @media(max-width:700px){html{scroll-padding-top:70px}nav{height:65px}.menu-btn{display:block}.nav-links{position:absolute;top:65px;left:0;width:100%;display:none;flex-direction:column;align-items:flex-start;gap:0;padding:12px 4%;background:rgba(5,11,22,.97);border-bottom:1px solid rgba(148,163,184,.12)}.nav-links.active{display:flex}.nav-links li{width:100%}.nav-links a{display:block;padding:12px 0}.hero{padding-top:105px}.hero h1{letter-spacing:-2.5px}.hero-description{font-size:.96rem}section{padding:75px 0}.career-card{padding:30px}}
+        @media(max-width:480px){.activity-card{padding:23px;border-radius:17px}.activity-actions{flex-direction:column}.repo-btn{width:100%}.problem{font-size:.72rem}}
+        @media(max-width:430px){.container{width:90%}.hero-buttons,.contact-buttons{flex-direction:column;align-items:stretch}.btn{width:100%}.skills-grid{grid-template-columns:1fr}.code-card{transform:none}.contact-card{padding:26px}}
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="#home" class="logo">Prajwal<span>.</span></a>
+
+            <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#career">Career Goal</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content reveal">
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    CSE Student • 2nd Semester
+                </div>
+
+                <h1>Prajwal<span>Vakare.</span></h1>
+
+                <p class="hero-description">
+                    Computer Science and Engineering student at
+                    Reva University, developing programming,
+                    problem-solving and software development
+                    skills through hands-on learning.
+                </p>
+
+                <div class="hero-info">
+                    <span class="info-pill">Computer Science and Engineering</span>
+                    <span class="info-pill">Reva University</span>
+                    <span class="info-pill">2nd Semester</span>
+                </div>
+
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" href="https://github.com/vakareprajwal24-droid/prajwal-pramit" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    <a class="btn btn-secondary" href="https://leetcode.com/u/tnYqkmpCwr/" target="_blank" rel="noopener noreferrer">LeetCode ↗</a>
+                    <a class="btn btn-secondary" href="#activities">Explore Activities ↓</a>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal">
+                <div class="code-card">
+                    <div class="window-bar">
+                        <span class="window-dot"></span>
+                        <span class="window-dot"></span>
+                        <span class="window-dot"></span>
+                    </div>
+
+                    <div class="code-content">
+                        <div class="code-line"><span class="comment">// Prajwal Vakare</span></div>
+                        <div class="code-line"><span class="keyword">student</span> name = <span class="string">"Prajwal Vakare"</span>;</div>
+                        <div class="code-line"><span class="keyword">branch</span> = <span class="string">"CSE"</span>;</div>
+                        <div class="code-line"><span class="keyword">semester</span> = <span class="string">"2nd"</span>;</div>
+                        <div class="code-line"><span class="keyword">university</span> = <span class="string">"Reva University"</span>;</div>
+                        <br>
+                        <div class="code-line"><span class="keyword">while</span> (learning) {</div>
+                        <div class="code-line">&nbsp;&nbsp;<span class="function">practice();</span></div>
+                        <div class="code-line">&nbsp;&nbsp;<span class="function">solveProblems();</span></div>
+                        <div class="code-line">&nbsp;&nbsp;<span class="function">buildSkills();</span></div>
+                        <div class="code-line">}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="section-label">01 — About</span>
+            <h2>Learning by building, practicing and solving.</h2>
+            <p>A student portfolio focused on programming, development tools and problem solving.</p>
+        </div>
+
+        <div class="about-grid">
+            <div class="glass-card profile-card reveal">
+                <div class="profile-initial">PV</div>
+                <h3>Prajwal Vakare</h3>
+                <p>Computer Science and Engineering student at Reva University.</p>
+            </div>
+
+            <div class="glass-card about-text reveal">
+                <p>
+                    I am a Computer Science and Engineering student at Reva University.
+                    I am developing my programming and software development skills through
+                    hands-on activities involving C/C++, Python, Java, HTML, Git, GitHub,
+                    GitLens, Live Share and problem solving.
+                </p>
+
+                <p>
+                    I am interested in improving my coding skills and building practical
+                    projects that will help me prepare for future software development
+                    and placement opportunities.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="activities">
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <span class="section-label">02 — Activities</span>
+            <h2>Hands-on activities and programming practice.</h2>
+            <p>
+                Development environment setup, GitHub practice,
+                collaboration tools and LeetCode problem solving.
+            </p>
+        </div>
+
+        <div class="activities">
+
+            <article class="activity-card reveal">
+                <div class="activity-number">ACTIVITY 01</div>
+
+                <h3>Development Environment Setup</h3>
+
+                <p>
+                    I set up my development environment for programming.
+                    I installed Visual Studio Code and the C/C++ extension.
+                    I also installed MSYS2 with MinGW-w64 GCC.
+                </p>
+
+                <ul>
+                    <li>Installed Visual Studio Code and the C/C++ extension.</li>
+                    <li>Installed MSYS2 with MinGW-w64 GCC.</li>
+                    <li>Added the required MSYS2 MinGW-w64 bin folder to PATH.</li>
+                    <li>Restarted VS Code and verified that GCC worked correctly.</li>
+                    <li>Successfully compiled and ran a C/C++ program.</li>
+                </ul>
+
+                <div class="shared-repository">
+                    Shared repository with Activity 2
+                </div>
+
+                <div class="activity-actions">
+                    <a class="repo-btn primary" href="https://github.com/vakareprajwal24-droid/protofilo" target="_blank" rel="noopener noreferrer">
+                        GitHub Repository ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="activity-card reveal">
+                <div class="activity-number">ACTIVITY 02</div>
+
+                <h3>Git &amp; GitHub</h3>
+
+                <p>
+                    I practiced using Git and GitHub to manage and publish my
+                    programming work. I created a C++ Hello World program and
+                    practiced repositories, commits, Git commands and pushing
+                    code to GitHub.
+                </p>
+
+                <ul>
+                    <li>Created a C++ Hello World program.</li>
+                    <li>Practiced repositories and commits.</li>
+                    <li>Practiced Git commands.</li>
+                    <li>Pushed programming work to GitHub.</li>
+                    <li>Worked with README documentation.</li>
+                </ul>
+
+                <div class="shared-repository">
+                    Same repository as Activity 1
+                </div>
+
+                <div class="activity-actions">
+                    <a class="repo-btn primary" href="https://github.com/vakareprajwal24-droid/protofilo" target="_blank" rel="noopener noreferrer">
+                        GitHub Repository ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="activity-card reveal">
+                <div class="activity-number">ACTIVITY 03</div>
+
+                <h3>GitLens &amp; Live Share</h3>
+
+                <p>
+                    I practiced GitLens and Live Share in Visual Studio Code.
+                    GitLens helped me understand Git history and changes in files,
+                    while Live Share helped me understand real-time collaboration
+                    between developers.
+                </p>
+
+                <ul>
+                    <li>Practiced GitLens in Visual Studio Code.</li>
+                    <li>Learned about Git history.</li>
+                    <li>Reviewed changes in files.</li>
+                    <li>Practiced Live Share.</li>
+                    <li>Worked with C/C++, Python, Java and HTML files.</li>
+                </ul>
+
+                <div class="activity-actions">
+                    <a class="repo-btn primary" href="https://github.com/vakareprajwal24-droid/prajwal-pramit" target="_blank" rel="noopener noreferrer">
+                        GitHub Repository ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="activity-card reveal">
+                <div class="activity-number">ACTIVITY 04</div>
+
+                <h3>LeetCode Practice</h3>
+
+                <p>
+                    I practiced programming problem solving on LeetCode and
+                    completed accepted solutions for several problems.
+                </p>
+
+                <div class="problem-list">
+                    <span class="problem">Two Sum</span>
+                    <span class="problem">Best Time to Buy and Sell Stock</span>
+                    <span class="problem">Reverse String</span>
+                    <span class="problem">Valid Anagram</span>
+                    <span class="problem">Longest Common Prefix</span>
+                    <span class="problem">Binary Search</span>
+                    <span class="problem">Move Zeroes</span>
+                    <span class="problem">Valid Parentheses</span>
+                </div>
+
+                <div class="activity-actions">
+                    <a class="repo-btn primary" href="https://github.com/vakareprajwal24-droid/leetcode-solutions" target="_blank" rel="noopener noreferrer">
+                        GitHub Solutions ↗
+                    </a>
+
+                    <a class="repo-btn" href="https://leetcode.com/u/tnYqkmpCwr/" target="_blank" rel="noopener noreferrer">
+                        LeetCode Profile ↗
+                    </a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="section-label">03 — Technical Skills</span>
+            <h2>Tools and technologies I am practicing.</h2>
+            <p>
+                Programming languages, development tools,
+                version control and problem-solving skills.
+            </p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill reveal">C</div>
+            <div class="skill reveal">C++</div>
+            <div class="skill reveal">Python</div>
+            <div class="skill reveal">Java</div>
+            <div class="skill reveal">HTML</div>
+            <div class="skill reveal">Git</div>
+            <div class="skill reveal">GitHub</div>
+            <div class="skill reveal">GitLens</div>
+            <div class="skill reveal">Visual Studio Code</div>
+            <div class="skill reveal">Live Share</div>
+            <div class="skill reveal">Problem Solving</div>
+            <div class="skill reveal">Basic Data Structures and Algorithms</div>
+        </div>
+    </div>
+</section>
+
+<section id="career">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="section-label">04 — Career Goal</span>
+            <h2>Focused on continuous technical growth.</h2>
+        </div>
+
+        <div class="career-card reveal">
+            <h3>Strengthen. Practice. Build.</h3>
+
+            <p>
+                My goal is to strengthen my programming, problem-solving
+                and development skills and become placement-ready for a
+                software development career. I want to continue practicing
+                data structures and algorithms, build useful projects and
+                improve my technical and communication skills.
+            </p>
+
+            <div class="goal-list">
+                <span class="goal">Programming Skills</span>
+                <span class="goal">Problem Solving</span>
+                <span class="goal">Data Structures &amp; Algorithms</span>
+                <span class="goal">Practical Projects</span>
+                <span class="goal">Technical Skills</span>
+                <span class="goal">Communication Skills</span>
+                <span class="goal">Placement Readiness</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="section-label">05 — Contact</span>
+            <h2>Explore my coding journey.</h2>
+            <p>
+                My GitHub repository and LeetCode profile contain
+                my programming practice and work.
+            </p>
+        </div>
+
+        <div class="contact-card reveal">
+            <div>
+                <h3>Prajwal Vakare</h3>
+                <p>
+                    Computer Science and Engineering —
+                    2nd Semester, Reva University
+                </p>
+            </div>
+
+            <div class="contact-buttons">
+                <a class="btn btn-primary" href="https://github.com/vakareprajwal24-droid/prajwal-pramit" target="_blank" rel="noopener noreferrer">
+                    GitHub ↗
+                </a>
+
+                <a class="btn btn-secondary" href="https://leetcode.com/u/tnYqkmpCwr/" target="_blank" rel="noopener noreferrer">
+                    LeetCode ↗
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>
+            Prajwal Vakare • Computer Science and Engineering
+            • Reva University
+        </p>
+    </div>
+</footer>
+
+<script>
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+
+        const isOpen = navLinks.classList.contains("active");
+
+        menuBtn.setAttribute("aria-expanded", isOpen);
+        menuBtn.textContent = isOpen ? "✕" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+        link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuBtn.setAttribute("aria-expanded", "false");
+            menuBtn.textContent = "☰";
+        });
+    });
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.12 }
+    );
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+
+    const sections = document.querySelectorAll("section[id]");
+    const navigationLinks = document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+        let currentSection = "";
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 120;
+
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.getAttribute("id");
+            }
+        });
+
+        navigationLinks.forEach(link => {
+            link.style.color = "";
+
+            if (link.getAttribute("href") === "#" + currentSection) {
+                link.style.color = "#ffffff";
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
